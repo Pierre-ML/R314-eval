@@ -28,10 +28,25 @@ jobs:
           script: |
             set -e
             export PATH="$HOME/.bun/bin:$PATH"
-            cd /var/www/R314-eval
+
+            echo "Début du déploiement"
+            cd /var/www/site/r314-eval
+
+            echo "Mise à jour du code..."
             git pull origin main
+
+            echo "Installation des dépendances..."
             bun install --frozen-lockfile
+
+            echo "Compilation..."
             bun run build
+
+            echo "Redémarrage..."
             sudo systemctl restart clients
-            sleep 2
-            systemctl is-active clients
+            sleep 3
+            systemctl is-active --quiet clients
+
+            echo "Health check..."
+            curl --fail -s -o /dev/null http://127.0.0.1:3344/
+
+            echo "Déploiement terminé"

@@ -5,9 +5,9 @@ Remplacer `USER`, `VPS_IP` et `DOMAINE.TLD` par vos valeurs.
 ## 1. Récupérer le code depuis GitHub
 
 ```bash
-sudo mkdir -p /var/www/R314-eval && sudo chown USER:USER /var/www/R314-eval
-git clone https://github.com/<compte>/R314-eval.git /var/www/R314-eval
-cd /var/www/R314-eval
+sudo mkdir -p /var/www/site/r314-eval && sudo chown USER:USER /var/www/site/r314-eval
+git clone https://github.com/<compte>/R314-eval.git /var/www/site/r314-eval
+cd /var/www/site/r314-eval
 curl -fsSL https://bun.sh/install | bash   # si Bun n'est pas installé
 bun install
 ```
@@ -15,8 +15,8 @@ bun install
 ## 2. Transférer la BDD locale (depuis le PC)
 
 ```bash
-ssh USER@VPS_IP "mkdir -p /var/www/R314-eval/data"
-scp data/clients.db USER@VPS_IP:/var/www/R314-eval/data/clients.db
+ssh USER@VPS_IP "mkdir -p /var/www/site/r314-eval/data"
+scp data/clients.db USER@VPS_IP:/var/www/site/r314-eval/data/clients.db
 ```
 
 ## 3. Fichier `.env` côté VPS

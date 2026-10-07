@@ -7,8 +7,8 @@ After=network.target
 [Service]
 Type=simple
 User=USER
-WorkingDirectory=/var/www/R314-eval
-EnvironmentFile=/var/www/R314-eval/.env
+WorkingDirectory=/var/www/site/r314-eval
+EnvironmentFile=/var/www/site/r314-eval/.env
 ExecStart=/home/USER/.bun/bin/bun ./dist/server/entry.mjs
 Restart=always
 RestartSec=5
