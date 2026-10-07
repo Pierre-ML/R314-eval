@@ -1,0 +1,17 @@
+# /etc/systemd/system/clients.service
+# Remplacer USER par l'utilisateur du VPS et vérifier le chemin du projet.
+[Unit]
+Description=Application Astro Clients (SSR + SQLite)
+After=network.target
+
+[Service]
+Type=simple
+User=USER
+WorkingDirectory=/var/www/R314-eval
+EnvironmentFile=/var/www/R314-eval/.env
+ExecStart=/home/USER/.bun/bin/bun ./dist/server/entry.mjs
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
