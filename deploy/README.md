@@ -29,7 +29,20 @@ cp .env.example .env
 SQLITE_DB_PATH=./data/clients.db
 HOST=127.0.0.1
 PORT=3344
+APP_URL=https://clients.DOMAINE.TLD
+GOOGLE_CLIENT_ID=...
+GOOGLE_CLIENT_SECRET=...
+AUTH_SECRET=...        # openssl rand -base64 32
 ```
+
+### Google OAuth
+
+Dans [Google Cloud Console](https://console.cloud.google.com/apis/credentials) → *Create credentials* → *OAuth client ID* → *Web application* :
+
+- Authorized JavaScript origins : `https://clients.DOMAINE.TLD` (et `http://localhost:4321` pour le dev)
+- Authorized redirect URIs : `https://clients.DOMAINE.TLD/auth/callback` (et `http://localhost:4321/auth/callback`)
+
+Copier le Client ID et le Client secret dans `.env`. Toutes les pages sauf `/login` exigent une connexion ; `/auth/logout` déconnecte.
 
 ## 4. Build
 
